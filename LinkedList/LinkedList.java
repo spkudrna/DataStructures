@@ -100,6 +100,42 @@ public class LinkedList
             }
             return position.next != null;
         }
-    
+        
+        public void add (Object element)
+        {
+            if (position == null)
+            {
+                addFirst(element);
+                position = first;
+            }
+            else
+            {
+                Node newNode = new Node();
+                newNode.data = element;
+                newNode.next = position.next;
+                position.next = newNode;
+                position = newNode;
+            }
+            
+            isAfterNext = false;
+        }
+        
+        public void remove()
+        {
+            if (!isAfterNext){throw new IllegalStateException();}
+            
+            if (position == first)
+            {
+                removeFirst();
+            }
+            
+            else
+            {
+                previous.next = position.next;
+            }
+            position = previous;
+            isAfterNext = false;
+        
+        }
     }
 }
