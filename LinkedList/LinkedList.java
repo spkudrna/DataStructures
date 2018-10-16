@@ -1,7 +1,8 @@
 import java.util.NoSuchElementException;
+import java.util.Stack;
 public class LinkedList
 {
-    private Node first;
+    protected Node first;
     
     class Node
     {
@@ -24,6 +25,7 @@ public class LinkedList
      * Adds an element to the front of the LL
      * @param element to add
      */
+    
     public void addFirst(Object element)
     {
         Node newNode = new Node();
@@ -32,6 +34,16 @@ public class LinkedList
         first = newNode;
     }
     
+    
+    /*
+    public void addFirst(Object element)
+    {
+        Node newNode = new Node();
+        first = newNode;
+        newNode.data = element;
+        newNode.next = first;
+    }
+    /**/
     /**
      * Returns the first element in the LL
      * @return the first element in the LL
@@ -57,6 +69,54 @@ public class LinkedList
     public ListIterator listIterator()
     {
         return new LinkedListIterator();
+    }
+    
+    public void reverse()
+    {
+        //Stack way (Not as Fast)
+        /*
+        if (first == null){throw new NoSuchElementException();}
+        Stack <Node> nodes = new Stack<>();
+        while (first.next != null)
+        {
+            nodes.add(first);
+            first = first.next;
+        }
+        
+        while (nodes.size() > 0)
+        {
+            first = nodes.pop();
+            first = first.next;
+        }
+        /**/
+        
+        //(Faster)
+        Node previous = new Node();
+        Node current = new Node();
+        
+        previous = first;
+        current = first.next;
+        if (first == null){return;}
+        while (current != null)
+        {
+            current = previous;
+            current = current.next;
+        }
+    }
+    
+    public int size()
+    {
+        if (first == null)
+            return 0;
+        
+        int count = 1;
+        while (first.next != null)
+        {
+            count ++;
+            first = first.next;
+        }
+            
+        return count;
     }
     
     class LinkedListIterator implements ListIterator
@@ -94,10 +154,10 @@ public class LinkedList
         
         public boolean hasNext()
         {
-            if (position.next == null)
-            {
-                return first != null;
-            }
+           //if (position.next == null)
+            //{
+           //     return first != null;
+            //}
             return position.next != null;
         }
         

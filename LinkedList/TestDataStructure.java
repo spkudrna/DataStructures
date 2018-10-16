@@ -5,17 +5,20 @@ public class TestDataStructure
     {
         LinkedList Test = new LinkedList();
     
-        String word = "New";
-        String word2;
+        Test.addFirst("Hi");
+        Test.addFirst("Bye");
+        Test.addFirst("HelloGoodbye");
         
-        Test.addFirst(word);
-        Test.addFirst(new String ("New Two"));
+        if(Test.first.next == Test.first) 
+            System.out.println("addFirst implementaion error! Check your darn code");
         
-        //OLD SCHOOL!
+        //Size Test
+        System.out.println(Test.size());
         
-        //word2 = Test.getFirst();//This returns an Object
-        word2 = (String) Test.getFirst();//Cast allows object to be typed as a String
         
-        System.out.print(word2);
+        Test.reverse();
+        
+        //Reverse Test
+        System.out.println(Test.getFirst());
     }
 }
