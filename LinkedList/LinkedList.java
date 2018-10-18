@@ -34,6 +34,53 @@ public class LinkedList
         first = newNode;
     }
     
+    /**
+     * Returns object at given index
+     * @return object
+     */
+    public Object get(int n)
+    {
+        return getNode(n).data;
+    }
+    
+    /**
+     * Sets data of node at specific index to given object
+     * @param index, newElement
+     */
+    public void set(int n, Object newElement)
+    {
+        getNode(n).data = newElement;
+    }
+    
+    private Node getNode(int n)
+    {
+        Node temp = new Node();
+        temp = first;
+        for (int i = 0; i<n; i++)
+        {
+            temp = temp.next;
+        }
+        return temp;
+    }
+    
+    /**
+     * Returns true if list contains given object
+     * @param object to search for
+     */
+    public boolean contains(Object obj)
+    {
+        Node temp = new Node();
+        temp = first;
+        while (temp.next != null)
+        {
+            if (temp.data.equals(obj))
+            {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
     
     /*
     public void addFirst(Object element)
